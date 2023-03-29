@@ -1,0 +1,18 @@
+version: '3'
+
+networks:
+  board-games-back:
+
+services:
+  board-games-back:
+    container_name: board-games-back
+    build: ./
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+    networks:
+      - board-games-back
+    ports:
+      - "8080:8080"
+    restart: on-failure
