@@ -1,15 +1,21 @@
 package com.univesp.game.service
 
 import com.univesp.game.dto.GameView
+import com.univesp.game.dto.NewGameForm
 import com.univesp.game.exception.NotFoundException
+import com.univesp.game.exception.RecordAlreadyExistsException
 import com.univesp.game.mapper.GameViewMapper
+import com.univesp.game.mapper.NewGameFormMapper
+import com.univesp.game.model.Category
+import com.univesp.game.model.Game
 import com.univesp.game.repository.GameRepository
 import org.springframework.stereotype.Service
 
 @Service
 class GameService(
     private val repository: GameRepository,
-    var gameViewMapper: GameViewMapper
+    var gameViewMapper: GameViewMapper,
+    val newGameFormMapper: NewGameFormMapper
 ) {
     fun listAll(): List<GameView> {
         val games = repository.findAll()
@@ -23,4 +29,19 @@ class GameService(
             .orElseThrow { NotFoundException("Jogo não encontrado.") }
         return gameViewMapper.map(game)
     }
+
+    fun searchByName(name: String): List<Game> {
+        return repository.findByNameIgnoreCase(name)
+    }
+
+    fun register(gameForm: NewGameForm): GameView {
+        val games = searchByName(gameForm.name)
+        if(games.isNotEmpty()){
+            throw RecordAlreadyExistsException("Já existe um Jogo com este nome cadastrado.")
+        }
+        val game = newGameFormMapper.map(gameForm)
+        val createdGame = repository.save(game)
+        return gameViewMapper.map(createdGame)
+    }
+
 }
