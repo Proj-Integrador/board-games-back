@@ -10,11 +10,11 @@ import java.time.LocalDate
 data class Customer(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long? = null,
 
-    val name: String,
-    val phone: String,
-    val cpf: String,
-    val birthday: LocalDate,
-    val address: String
+    var name: String,
+    var phone: String,
+    var cpf: String,
+    var birthday: LocalDate,
+    var address: String
 )
