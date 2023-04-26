@@ -24,10 +24,9 @@ class GameService(
         }
     }
 
-    fun searchById(id: Long): GameView {
-        val game = repository.findById(id)
+    fun searchById(id: Long): Game {
+        return repository.findById(id)
             .orElseThrow { NotFoundException("Jogo não encontrado.") }
-        return gameViewMapper.map(game)
     }
 
     fun searchByName(name: String): List<Game> {

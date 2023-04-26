@@ -7,22 +7,22 @@ import java.time.LocalDate
 data class Rent(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long? = null,
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
     val customer: Customer,
 
-    @OneToOne
-    @PrimaryKeyJoinColumn(name = "game_id")
+    @ManyToOne
+    @JoinColumn(name = "game_id")
     val game: Game,
 
     @Column(name = "rent_date")
     val rentDate: LocalDate,
 
     val daysRented: Int? = null,
-    val returnDate: LocalDate? = null,
+    var returnDate: LocalDate? = null,
     val originalPrice: Int,
-    val delayFee: Int? = null,
+    var delayFee: Int? = null,
     val note: String? = null
 )

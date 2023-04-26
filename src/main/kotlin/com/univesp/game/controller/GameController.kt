@@ -2,6 +2,7 @@ package com.univesp.game.controller
 
 import com.univesp.game.dto.GameView
 import com.univesp.game.dto.NewGameForm
+import com.univesp.game.mapper.GameViewMapper
 import com.univesp.game.mapper.NewGameFormMapper
 import com.univesp.game.service.GameService
 import jakarta.validation.Valid
@@ -14,7 +15,8 @@ import java.util.*
 @RequestMapping("/games")
 class GameController(
     val service: GameService,
-    val gameFormMapper: NewGameFormMapper
+    val gameFormMapper: NewGameFormMapper,
+    val gameViewMapper: GameViewMapper
 ) {
 
     @GetMapping
@@ -26,14 +28,15 @@ class GameController(
     fun searchById(
         @PathVariable id: Long
     ): ResponseEntity<GameView>{
-        return ResponseEntity.ok(service.searchById(id))
+        val game = service.searchById(id)
+        return ResponseEntity.ok(gameViewMapper.map(game))
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     fun register(
         @RequestBody @Valid form: NewGameForm
-    ): ResponseEntity<GameView> {
-        val game = service.register(form)
-        return ResponseEntity.status(HttpStatus.CREATED).body(game)
+    ) {
+        service.register(form)
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
 class RentViewMapper : Mapper<Rent, RentView> {
     override fun map(t: Rent): RentView {
         return RentView(
-            id = t.id,
+            id = t.id!!,
             customerId = t.customer.id!!,
             gameId = t.game.id,
             rentDate = t.rentDate,
