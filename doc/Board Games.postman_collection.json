@@ -1,0 +1,567 @@
+{
+	"info": {
+		"_postman_id": "13bc9c21-35b7-416a-9e98-f5868198b201",
+		"name": "Board Games",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8441597",
+		"_collection_link": "https://grey-meteor-716173.postman.co/workspace/Board-Games~467bd184-aa78-4f9b-907c-f87513af1e1e/collection/8441597-13bc9c21-35b7-416a-9e98-f5868198b201?action=share&creator=8441597&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/customers",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customers/id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/customers/2",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"customers",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customers/register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Claudia Maria  dos Santos\", \r\n    \"phone\": \"1199882255\", \r\n    \"cpf\": \"88338877600\", \r\n    \"birthday\": \" \",\r\n    \"address\": \"Rua das Pitangueiras, 195\"\r\n}"
+						},
+						"url": {
+							"raw": "{{LOCAL}}/customers",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customers/id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Maria do Amaral Santos\", \r\n    \"phone\": \"1192662255\", \r\n    \"cpf\": \"33007384673\", \r\n    \"birthday\": \"1988-10-09\",\r\n    \"address\": \"Rua das Amoras, 195\"\r\n}"
+						},
+						"url": {
+							"raw": "{{LOCAL}}/customers/12",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"customers",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Game",
+			"item": [
+				{
+					"name": "games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/games",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "games/id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/games/3",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"games",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "games/register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Four Against Darkness - Edição Brasileira\",\r\n    \"image\": \"image\", \r\n    \"stockTotal\": 4, \r\n    \"categoryId\": 3, \r\n    \"pricePerDay\": 1700,\r\n    \"ludopediaLink\": \"https://ludopedia.com.br/jogo/four-against-darkness\"\r\n}"
+						},
+						"url": {
+							"raw": "{{LOCAL}}/games",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"games"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "games/register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Clank!: Um Deck Building de Aventura\",\r\n    \"image\": \"image\", \r\n    \"stockTotal\": 2, \r\n    \"categoryId\": 1, \r\n    \"pricePerDay\": 500,\r\n    \"ludopediaLink\": \"https://ludopedia.com.br/jogo/clank-a-deck-building-adventure\"\r\n}"
+								},
+								"url": {
+									"raw": "{{LOCAL}}/games",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"games"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 17 Apr 2023 02:49:36 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2023-04-16T23:49:36.8361438\",\n    \"status\": 409,\n    \"error\": \"CONFLICT\",\n    \"message\": \"Já existe um Jogo com este nome cadastrado.\",\n    \"path\": \"/games\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/categories",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categories/id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/categories/3",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"categories",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categories",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Trivia\"\r\n}"
+						},
+						"url": {
+							"raw": "{{LOCAL}}/categories",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "categories",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Jogo de Guerra\"\r\n}"
+								},
+								"url": {
+									"raw": "{{LOCAL}}/categories",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Location",
+									"value": "http://localhost:8080/categories/5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Apr 2023 23:11:52 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 5,\n    \"name\": \"Jogo de Guerra\"\n}"
+						},
+						{
+							"name": "categories",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"\"\r\n}"
+								},
+								"url": {
+									"raw": "{{LOCAL}}/categories",
+									"host": [
+										"{{LOCAL}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 16 Apr 2023 23:15:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2023-04-16T20:15:40.2656267\",\n    \"status\": 500,\n    \"error\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.univesp.game.model.Category> com.univesp.game.controller.CategoryController.register(com.univesp.game.model.Category,org.springframework.web.util.UriComponentsBuilder): [Field error in object 'category' on field 'name': rejected value []; codes [NotEmpty.category.name,NotEmpty.name,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [category.name,name]; arguments []; default message [name]]; default message [Nome da categoria não pode estar em branco.]] \",\n    \"path\": \"/categories\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Rent",
+			"item": [
+				{
+					"name": "rentals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/rentals",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"rentals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rentals by Customer Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOCAL}}/rentals",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"rentals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rentals/register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customerId\": 3,\r\n  \"gameId\": 4,\r\n  \"daysRented\": 5\r\n}"
+						},
+						"url": {
+							"raw": "{{LOCAL}}/rentals",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"rentals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rentals/:id/return",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/rentals/2/return",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"rentals",
+								"2",
+								"return"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rentals/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL}}/rentals/6",
+							"host": [
+								"{{LOCAL}}"
+							],
+							"path": [
+								"rentals",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "home Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{PROD}}",
+					"host": [
+						"{{PROD}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "LOCAL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "PROD",
+			"value": "https://board-games-back.duckdns.org",
+			"type": "string"
+		}
+	]
+}
