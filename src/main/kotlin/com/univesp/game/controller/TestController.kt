@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping
-@CrossOrigin("*")
+@CrossOrigin
 class TestController {
 
     @GetMapping
