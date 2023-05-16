@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/categories")
-@CrossOrigin("*")
+@CrossOrigin
 class CategoryController(
     val service: CategoryService
 ) {

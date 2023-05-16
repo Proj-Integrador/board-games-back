@@ -11,7 +11,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/customers")
-@CrossOrigin("*")
+@CrossOrigin
 class CustomerController(
     val service: CustomerService //Declara as depenências no construtor. Spring saberá que quando instanciar controller o service deverá ser injetado
 ) {
