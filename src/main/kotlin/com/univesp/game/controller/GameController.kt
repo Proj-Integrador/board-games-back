@@ -13,6 +13,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/games")
+@CrossOrigin("*")
 class GameController(
     val service: GameService,
     val gameFormMapper: NewGameFormMapper,

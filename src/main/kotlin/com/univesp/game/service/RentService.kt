@@ -62,4 +62,11 @@ class RentService(
 
         repository.deleteById(id)
     }
+
+    fun listByCustomer(customerId: Long): List<RentView> {
+        val rentals = repository.findByCustomerId(customerId)
+        return rentals.map { t ->
+            rentViewMapper.map(t)
+        }
+    }
 }
