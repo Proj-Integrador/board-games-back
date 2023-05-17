@@ -34,7 +34,7 @@ class CustomerController(
         service.register(form)
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     fun update(
         @RequestBody @Valid form: NewCustomerForm,
