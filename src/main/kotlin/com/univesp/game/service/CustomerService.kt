@@ -1,6 +1,7 @@
 package com.univesp.game.service
 
 import com.univesp.game.dto.NewCustomerForm
+import com.univesp.game.dto.UpdateCustomerForm
 import com.univesp.game.exception.NotFoundException
 import com.univesp.game.exception.RecordAlreadyExistsException
 import com.univesp.game.mapper.NewCustomerMapper
@@ -23,27 +24,25 @@ class CustomerService(
             .orElseThrow{NotFoundException("Cliente não encontrado")}
     }
 
-    fun checkCpf(form: NewCustomerForm) {
-        val customers = repository.findByCpf(form.cpf)
+    fun checkCpf(cpf: String) {
+        val customers = repository.findByCpf(cpf)
         if(customers.isNotEmpty()){
             throw RecordAlreadyExistsException("CPF Já cadastrado.")
         }
     }
 
     fun register(form: NewCustomerForm): Customer {
-        checkCpf(form)
+        checkCpf(form.cpf)
         val customer = newCustomerMapper.map(form)
         return repository.save(customer)
     }
 
-    fun update(id: Long, form: NewCustomerForm) {
-        checkCpf(form)
+    fun update(id: Long, form: UpdateCustomerForm) {
 
         var customer = searchById(id)
 
         customer.name = form.name
         customer.phone = form.phone
-        customer.cpf = form.cpf
         customer.birthday = form.birthday
         customer.address = form.address
 
