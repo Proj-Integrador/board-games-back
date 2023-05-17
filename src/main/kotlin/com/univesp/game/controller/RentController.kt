@@ -42,10 +42,10 @@ class RentController(
         service.deleteGame(id)
     }
 
-    @GetMapping("/{customerId}")
+    @GetMapping("/customer")
     fun listByCustomer(
-        @PathVariable customerId: Long
+        @RequestParam customerId: Int
     ): List<RentView> {
-        return service.listByCustomer(customerId)
+        return service.listByCustomer(customerId.toLong())
     }
 }
