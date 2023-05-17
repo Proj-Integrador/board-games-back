@@ -1,6 +1,7 @@
 package com.univesp.game.controller
 
 import com.univesp.game.dto.NewCustomerForm
+import com.univesp.game.dto.UpdateCustomerForm
 import com.univesp.game.model.Customer
 import com.univesp.game.service.CustomerService
 import jakarta.validation.Valid
@@ -34,10 +35,10 @@ class CustomerController(
         service.register(form)
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     fun update(
-        @RequestBody @Valid form: NewCustomerForm,
+        @RequestBody @Valid form: UpdateCustomerForm,
         @PathVariable id: Long
     ) {
         service.update(id, form)
