@@ -22,6 +22,10 @@ class UpdateCustomerForm(
     val birthday: LocalDate,
 
     @field:NotBlank(message = "O Endereço é obrigatório.")
-    val address: String
+    val address: String,
+
+    @field:NotBlank(message = "O email é obrigatório.")
+    @field:Pattern(regexp="[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}", message = "Email inválido.")
+    val email: String
 ) {
 }

@@ -27,7 +27,8 @@ class RentViewMapper : Mapper<Rent, RentView> {
                 id = t.game.id,
                 name = t.game.name,
                 categoryId = t.game.category.id,
-                categoryName = t.game.category.name
+                categoryName = t.game.category.name,
+                ludopediaLink = t.game.ludopediaLink
             )
         )
     }

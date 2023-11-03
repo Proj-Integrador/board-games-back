@@ -12,7 +12,8 @@ class NewCustomerMapper : Mapper<NewCustomerForm, Customer> {
             phone = t.phone,
             cpf = t.cpf,
             birthday = t.birthday,
-            address = t.address
+            address = t.address,
+            email = t.email
         )
     }
 }

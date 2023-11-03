@@ -16,5 +16,6 @@ data class Customer(
     var phone: String,
     var cpf: String,
     var birthday: LocalDate,
-    var address: String
+    var address: String,
+    var email: String
 )
