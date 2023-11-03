@@ -4,5 +4,6 @@ data class RentGameView(
     val id: Long?,
     val name: String,
     val categoryId: Long,
-    val categoryName: String
+    val categoryName: String,
+    val ludopediaLink: String? = null
 )

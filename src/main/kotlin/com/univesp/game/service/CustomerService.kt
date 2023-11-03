@@ -45,6 +45,7 @@ class CustomerService(
         customer.phone = form.phone
         customer.birthday = form.birthday
         customer.address = form.address
+        customer.email = form.email
 
         repository.save(customer)
     }
