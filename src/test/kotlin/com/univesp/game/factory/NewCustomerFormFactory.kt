@@ -8,7 +8,7 @@ class NewCustomerFormFactory {
         return NewCustomerForm(
             "cool name",
             "0011223344",
-            "22233344455",
+            "22266677799",
             LocalDate.now(),
             "cool address",
             "cool@email.com"
