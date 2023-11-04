@@ -10,7 +10,7 @@ data class Game(
 
     val name: String,
     val image: String? = null,
-    val stockTotal: Int,
+    var stockTotal: Int,
 
     @ManyToOne
     @JoinColumn(name = "category_id")

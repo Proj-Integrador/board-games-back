@@ -2,11 +2,13 @@ package com.univesp.game.service
 
 import com.univesp.game.dto.NewRentForm
 import com.univesp.game.dto.RentView
+import com.univesp.game.exception.GameNotAvailableException
 import com.univesp.game.exception.GeneralBadRequestException
 import com.univesp.game.exception.NotFoundException
 import com.univesp.game.mapper.NewRentFormMapper
 import com.univesp.game.mapper.RentViewMapper
 import com.univesp.game.model.Rent
+import com.univesp.game.repository.GameRepository
 import com.univesp.game.repository.RentRepository
 import org.springframework.stereotype.Service
 import java.time.LocalDate
@@ -15,7 +17,8 @@ import java.time.LocalDate
 class RentService(
     private val repository: RentRepository,
     var rentViewMapper: RentViewMapper,
-    val newRentFormMapper: NewRentFormMapper
+    val newRentFormMapper: NewRentFormMapper,
+    val gameRepository: GameRepository
 ) {
     fun listAll(): List<RentView> {
         val rentals = repository.findAll()
@@ -26,7 +29,12 @@ class RentService(
 
     fun register(form: NewRentForm) {
         val rent = newRentFormMapper.map(form)
-        repository.save(rent)
+
+        if (getRentAvailability(form.gameId)) {
+            repository.save(rent)
+        } else {
+            throw GameNotAvailableException("Game not available.")
+        }
     }
 
     fun searchById(id: Long): Rent {
@@ -68,5 +76,15 @@ class RentService(
         return rentals.map { t ->
             rentViewMapper.map(t)
         }
+    }
+
+    fun getRentAvailability(gameId: Long): Boolean {
+        val game = gameRepository.findById(gameId)
+            .orElseThrow { NotFoundException("Game not found.") }
+
+        val rentals = repository.findByGameId(gameId)
+        val activeRentals = rentals.count { item -> item.returnDate == null}
+
+        return game.stockTotal > activeRentals
     }
 }
