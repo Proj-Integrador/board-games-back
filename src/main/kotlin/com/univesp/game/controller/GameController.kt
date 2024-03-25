@@ -6,6 +6,7 @@ import com.univesp.game.mapper.GameViewMapper
 import com.univesp.game.mapper.NewGameFormMapper
 import com.univesp.game.service.GameService
 import jakarta.validation.Valid
+import org.springframework.data.domain.Sort
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -21,8 +22,11 @@ class GameController(
 ) {
 
     @GetMapping
-    fun listAll(): List<GameView> {
-        return service.listAll()
+    fun listAll(
+        @RequestParam(defaultValue = "") filter: String,
+        @RequestParam(defaultValue = "asc") sort: String
+    ): List<GameView> {
+        return service.listAllFilteredByName(filter, Sort.by(Sort.Direction.fromString(sort), "name"))
     }
 
     @GetMapping("/{id}")
