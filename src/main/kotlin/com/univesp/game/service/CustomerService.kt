@@ -7,6 +7,7 @@ import com.univesp.game.exception.RecordAlreadyExistsException
 import com.univesp.game.mapper.NewCustomerMapper
 import com.univesp.game.model.Customer
 import com.univesp.game.repository.CustomerRepository
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 
 @Service //Classe gerenciada pelo Spring. Pode-se injetar em qualquer classe também gerenciada pelo Spring. Na classe que se quer injetar -> Declarar construtor que recebe como parâmetro um Service
@@ -48,5 +49,9 @@ class CustomerService(
         customer.email = form.email
 
         repository.save(customer)
+    }
+
+    fun listAllFilteredByName(filter: String, sort: Sort): List<Customer> {
+        return repository.findByNameContainingIgnoreCase(filter, sort)
     }
 }

@@ -6,9 +6,9 @@ import com.univesp.game.exception.NotFoundException
 import com.univesp.game.exception.RecordAlreadyExistsException
 import com.univesp.game.mapper.GameViewMapper
 import com.univesp.game.mapper.NewGameFormMapper
-import com.univesp.game.model.Category
 import com.univesp.game.model.Game
 import com.univesp.game.repository.GameRepository
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 
 @Service
@@ -41,6 +41,14 @@ class GameService(
         val game = newGameFormMapper.map(gameForm)
         val createdGame = repository.save(game)
         return gameViewMapper.map(createdGame)
+    }
+
+    fun listAllFilteredByName(filter: String, sort: Sort): List<GameView> {
+        val games = repository.findByNameContainingIgnoreCase(filter, sort)
+
+        return games.map { t ->
+            gameViewMapper.map(t)
+        }
     }
 
 }
