@@ -29,3 +29,8 @@ Or use the shortcut: Ctrl+Shift+F10
 
 ## Postman Collection
 The Postman Collection can be obtained in /doc folder.
+
+## Open API (Swagger)
+The Swagger UI page is available at http://server:port/swagger-ui.html 
+
+The OpenAPI description is available at the following url for json format: http://server:port/v3/api-docs

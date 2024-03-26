@@ -4,7 +4,7 @@
 		"name": "Board Games",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "8441597",
-		"_collection_link": "https://grey-meteor-716173.postman.co/workspace/Board-Games~467bd184-aa78-4f9b-907c-f87513af1e1e/collection/8441597-13bc9c21-35b7-416a-9e98-f5868198b201?action=share&creator=8441597&source=collection_link"
+		"_collection_link": "https://grey-meteor-716173.postman.co/workspace/Board-Games~467bd184-aa78-4f9b-907c-f87513af1e1e/collection/8441597-13bc9c21-35b7-416a-9e98-f5868198b201?action=share&source=collection_link&creator=8441597"
 	},
 	"item": [
 		{
@@ -16,12 +16,23 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/customers",
+							"raw": "{{URL}}/customers?filter=&sort=desc",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"customers"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": ""
+								},
+								{
+									"key": "sort",
+									"value": "desc",
+									"description": "asc | desc"
+								}
 							]
 						}
 					},
@@ -33,13 +44,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/customers/2",
+							"raw": "{{URL}}/customers/:customerId",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"customers",
-								"2"
+								":customerId"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": "21"
+								}
 							]
 						}
 					},
@@ -58,12 +75,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Claudia Maria  dos Santos\", \r\n    \"phone\": \"1199882255\", \r\n    \"cpf\": \"88338877600\", \r\n    \"birthday\": \" \",\r\n    \"address\": \"Rua das Pitangueiras, 195\"\r\n}"
+							"raw": "{\r\n    \"name\": \"Claudia Maria dos Santos\", \r\n    \"phone\": \"1199882255\", \r\n    \"cpf\": \"88338877600\", \r\n    \"birthday\": \"2000-04-06\",\r\n    \"address\": \"Rua das Pitangueiras, 195\",\r\n    \"email\": \"claudinha@2000yahoo.com.br\"\r\n}"
 						},
 						"url": {
-							"raw": "{{LOCAL}}/customers",
+							"raw": "{{URL}}/customers",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"customers"
@@ -75,7 +92,7 @@
 				{
 					"name": "customers/id",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -85,16 +102,22 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Maria do Amaral Santos\", \r\n    \"phone\": \"1192662255\", \r\n    \"cpf\": \"33007384673\", \r\n    \"birthday\": \"1988-10-09\",\r\n    \"address\": \"Rua das Amoras, 195\"\r\n}"
+							"raw": "{\r\n    \"name\": \"Claudia Maria dos Santos\", \r\n    \"phone\": \"1199882255\", \r\n    \"cpf\": \"88338877600\", \r\n    \"birthday\": \"2000-04-10\",\r\n    \"address\": \"Rua das Pitangueiras, 195\",\r\n    \"email\": \"claudinha@2000yahoo.com.br\"\r\n}"
 						},
 						"url": {
-							"raw": "{{LOCAL}}/customers/12",
+							"raw": "{{URL}}/customers/:customerId",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"customers",
-								"12"
+								":customerId"
+							],
+							"variable": [
+								{
+									"key": "customerId",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -111,12 +134,23 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/games",
+							"raw": "{{URL}}/games?filter=&sort=asc",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"games"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": ""
+								},
+								{
+									"key": "sort",
+									"value": "asc",
+									"description": "asc | desc"
+								}
 							]
 						}
 					},
@@ -128,13 +162,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/games/3",
+							"raw": "{{URL}}/games/:gameId",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"games",
-								"3"
+								":gameId"
+							],
+							"variable": [
+								{
+									"key": "gameId",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -156,70 +196,16 @@
 							"raw": "{\r\n    \"name\": \"Four Against Darkness - Edição Brasileira\",\r\n    \"image\": \"image\", \r\n    \"stockTotal\": 4, \r\n    \"categoryId\": 3, \r\n    \"pricePerDay\": 1700,\r\n    \"ludopediaLink\": \"https://ludopedia.com.br/jogo/four-against-darkness\"\r\n}"
 						},
 						"url": {
-							"raw": "{{LOCAL}}/games",
+							"raw": "{{URL}}/games",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"games"
 							]
 						}
 					},
-					"response": [
-						{
-							"name": "games/register",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Clank!: Um Deck Building de Aventura\",\r\n    \"image\": \"image\", \r\n    \"stockTotal\": 2, \r\n    \"categoryId\": 1, \r\n    \"pricePerDay\": 500,\r\n    \"ludopediaLink\": \"https://ludopedia.com.br/jogo/clank-a-deck-building-adventure\"\r\n}"
-								},
-								"url": {
-									"raw": "{{LOCAL}}/games",
-									"host": [
-										"{{LOCAL}}"
-									],
-									"path": [
-										"games"
-									]
-								}
-							},
-							"status": "Conflict",
-							"code": 409,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 17 Apr 2023 02:49:36 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"timestamp\": \"2023-04-16T23:49:36.8361438\",\n    \"status\": 409,\n    \"error\": \"CONFLICT\",\n    \"message\": \"Já existe um Jogo com este nome cadastrado.\",\n    \"path\": \"/games\"\n}"
-						}
-					]
+					"response": []
 				}
 			]
 		},
@@ -232,9 +218,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/categories",
+							"raw": "{{URL}}/categories",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"categories"
@@ -249,13 +235,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/categories/3",
+							"raw": "{{URL}}/categories/:categoryId",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"categories",
-								"3"
+								":categoryId"
+							],
+							"variable": [
+								{
+									"key": "categoryId",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -279,126 +271,19 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Trivia\"\r\n}"
+							"raw": "{\r\n    \"name\": \"DUNGEON crawler\"\r\n}"
 						},
 						"url": {
-							"raw": "{{LOCAL}}/categories",
+							"raw": "{{URL}}/categories",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"categories"
 							]
 						}
 					},
-					"response": [
-						{
-							"name": "categories",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Jogo de Guerra\"\r\n}"
-								},
-								"url": {
-									"raw": "{{LOCAL}}/categories",
-									"host": [
-										"{{LOCAL}}"
-									],
-									"path": [
-										"categories"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Location",
-									"value": "http://localhost:8080/categories/5"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 16 Apr 2023 23:11:52 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": 5,\n    \"name\": \"Jogo de Guerra\"\n}"
-						},
-						{
-							"name": "categories",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"\"\r\n}"
-								},
-								"url": {
-									"raw": "{{LOCAL}}/categories",
-									"host": [
-										"{{LOCAL}}"
-									],
-									"path": [
-										"categories"
-									]
-								}
-							},
-							"status": "Internal Server Error",
-							"code": 500,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 16 Apr 2023 23:15:40 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"timestamp\": \"2023-04-16T20:15:40.2656267\",\n    \"status\": 500,\n    \"error\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.univesp.game.model.Category> com.univesp.game.controller.CategoryController.register(com.univesp.game.model.Category,org.springframework.web.util.UriComponentsBuilder): [Field error in object 'category' on field 'name': rejected value []; codes [NotEmpty.category.name,NotEmpty.name,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [category.name,name]; arguments []; default message [name]]; default message [Nome da categoria não pode estar em branco.]] \",\n    \"path\": \"/categories\"\n}"
-						}
-					]
+					"response": []
 				}
 			]
 		},
@@ -411,12 +296,23 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/rentals",
+							"raw": "{{URL}}/rentals?filter=&sort=asc",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"rentals"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": ""
+								},
+								{
+									"key": "sort",
+									"value": "asc",
+									"description": "asc | desc"
+								}
 							]
 						}
 					},
@@ -428,12 +324,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{LOCAL}}/rentals",
+							"raw": "{{URL}}/rentals/customer?customerId=19",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
-								"rentals"
+								"rentals",
+								"customer"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "19"
+								}
 							]
 						}
 					},
@@ -452,12 +355,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"customerId\": 3,\r\n  \"gameId\": 4,\r\n  \"daysRented\": 5\r\n}"
+							"raw": "{\r\n  \"customerId\": 18,\r\n  \"gameId\": 11,\r\n  \"daysRented\": 1\r\n}"
 						},
 						"url": {
-							"raw": "{{LOCAL}}/rentals",
+							"raw": "{{URL}}/rentals",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"rentals"
@@ -478,14 +381,20 @@
 							}
 						],
 						"url": {
-							"raw": "{{LOCAL}}/rentals/2/return",
+							"raw": "{{URL}}/rentals/:rentalId/return",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"rentals",
-								"2",
+								":rentalId",
 								"return"
+							],
+							"variable": [
+								{
+									"key": "rentalId",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -503,13 +412,19 @@
 							}
 						],
 						"url": {
-							"raw": "{{LOCAL}}/rentals/6",
+							"raw": "{{URL}}/rentals/:rentalId",
 							"host": [
-								"{{LOCAL}}"
+								"{{URL}}"
 							],
 							"path": [
 								"rentals",
-								"6"
+								":rentalId"
+							],
+							"variable": [
+								{
+									"key": "rentalId",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -523,9 +438,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{PROD}}",
+					"raw": "{{URL}}",
 					"host": [
-						"{{PROD}}"
+						"{{URL}}"
 					]
 				}
 			},

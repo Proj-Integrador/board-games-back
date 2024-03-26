@@ -10,6 +10,7 @@ import com.univesp.game.mapper.RentViewMapper
 import com.univesp.game.model.Rent
 import com.univesp.game.repository.GameRepository
 import com.univesp.game.repository.RentRepository
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 
@@ -25,6 +26,15 @@ class RentService(
         return rentals.map { t ->
             rentViewMapper.map(t)
         }
+    }
+
+    fun listAllFilteredByCustomerName(filter: String, sort: Sort): List<RentView> {
+        val rentals = repository.findAll(sort)
+        val all =  rentals.map { t ->
+            rentViewMapper.map(t)
+        }
+        val filtered = all.filter { it.customer.name.contains(filter, true) }
+        return filtered
     }
 
     fun register(form: NewRentForm) {
