@@ -21,7 +21,9 @@ pipeline {
         } } }
         stage("Deploy") { steps { script {
             sh """
-                rsync -avz --delete ${WORKSPACE}/{Dockerfile,docker-compose.yaml,target} /home/ubuntu/board-games-back
+                rsync -avz --delete Dockerfile /home/ubuntu/board-games-back
+                rsync -avz --delete docker-compose.yaml /home/ubuntu/board-games-back
+                rsync -avz --delete target /home/ubuntu/board-games-back
                 cd /home/ubuntu/board-games-back
                 docker-compose build --no-cache
                 docker-compose down
