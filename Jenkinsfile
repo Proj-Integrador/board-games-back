@@ -9,7 +9,7 @@ pipeline {
     }
     stages {
         stage("Build") { steps { script {
-            sh """
+            sh """#!/bin/bash
                 set +x
                 source "/home/ubuntu/.sdkman/bin/sdkman-init.sh" > /dev/null 2>&1
                 sdk use java 17.0.6-amzn
